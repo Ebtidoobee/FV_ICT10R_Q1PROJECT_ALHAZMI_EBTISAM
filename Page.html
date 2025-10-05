@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>Lunar Cafe - Order Food!</title>
+
+    <link rel="stylesheet" href="https://pyscript.net/releases/2025.8.1/core.css" />
+
+    <script type="module" src="https://pyscript.net/releases/2025.8.1/core.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <style> 
+       :root {
+            --primary-color: #880044; 
+            --secondary-color: #F7D7DA; 
+            --accent-color: #FFC0CB;
+            --text-color: #444444; 
+            --background-color: #FFF0F5; 
+            --card-background: white;
+            --gold-accent: #DAA520; 
+        }
+
+        body {
+            background-image: url("https://media.istockphoto.com/id/1578731754/vector/blurred-defocused-pastel-gradient-blue-pink-purple-and-white-romantic-background.jpg?s=612x612&w=0&k=20&c=g2Mh7xQTZ7ZttwPhznJzqVoOofNIoIIy8vAyZ_gLIpw=");
+            background-color: var(--background-color); 
+            background-repeat: no-repeat; 
+            background-size: cover; 
+            background-attachment: fixed; 
+            color: var(--text-color); 
+            padding-top: 80px; 
+            font-family: 'Times New Roman', serif; 
+        }
+
+        .navbar {
+            background-color: var(--primary-color) !important; 
+        }
+        
+      
+        .navbar-brand,
+        .navbar-nav .nav-link .btn-outline-light {
+            color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .navbar-nav .nav-link .btn-outline-light:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+      
+        .bck2 {
+            background-image: linear-gradient(to right, var(--primary-color), var(--accent-color)); 
+            border-radius: 15px;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+        }
+
+        
+        .bck2 h1 {
+            color: white !important; 
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            font-family: 'Playfair Display', serif; 
+        }
+
+       
+        .card {
+            border: 1px solid var(--secondary-color); 
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background-color: var(--card-background); 
+        }
+
+        
+        .card-header {
+            background-color: var(--primary-color) !important;
+            color: white !important;
+            border-radius: 15px 15px 0 0 !important;
+            border-bottom: none;
+        }
+
+        .card-header h2, .card-header h4 {
+            color: white !important;
+        }
+
+        
+        summary {
+            font-size: 1.5rem; 
+            font-weight: bold; 
+            cursor: pointer; 
+            color: var(--primary-color); 
+            padding: 15px 10px;
+            border-bottom: 1px solid var(--secondary-color);
+            text-align: center; 
+        }
+        
+        summary:hover {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+        }
+
+        summary img {
+            border-radius: 10px; 
+            object-fit: cover;
+            width: 150px; 
+            height: 100px;
+            display: block;
+            margin: 10px auto;
+            border: 3px solid var(--accent-color); 
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        
+        .bck {
+            background-color: var(--secondary-color);
+            padding: 5px 10px; 
+            border-radius: 10px; 
+            margin: 5px;
+            color: var(--primary-color) !important; 
+            font-style: normal;
+            font-weight: bold;
+        }
+        
+       
+        .form-control {
+            width: 200px;
+            margin: 0 auto; 
+            text-align: center;
+            border: 1px solid var(--primary-color);
+            color: var(--text-color);
+            font-style: normal;
+        }
+        
+       
+        #tax {
+            color: var(--gold-accent) !important; 
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+       
+        .card-header .bck {
+            background-color: white; 
+            color: var(--text-color) !important; 
+            border: 1px dashed var(--primary-color);
+            text-align: left;
+            padding: 20px;
+            margin: 20px auto;
+            font-style: normal;
+            max-width: 80%;
+        }
+        
+        #Name {
+            color: var(--primary-color) !important;
+            font-size: 2rem !important;
+            font-weight: bold;
+            font-style: normal !important;
+        }
+        
+        #output4 {
+            color: var(--primary-color) !important;
+            font-weight: bold;
+            font-size: 1.5rem !important;
+        }
+
+       .btn-light {
+            background-color: var(--gold-accent) !important;
+            border-color: var(--gold-accent) !important;
+            color: white !important;
+            font-weight: bold;
+        }
+        
+        .btn-light:hover {
+            background-color: #B8860B !important; 
+            border-color: #B8860B !important;
+        }
+        
+    
+        .btn-active.btn-primary {
+            background-color: var(--gold-accent) !important;
+            border-color: var(--gold-accent) !important;
+        }
+        
+        .btn-active.btn-primary:hover {
+            background-color: #B8860B !important;
+            border-color: #B8860B !important;
+        }
+
+    </style>
+
+</head>
+
+<body class="container"> 
+
+    <script type="py" src="Main2.py"></script>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top"> <div class="container-fluid">
+            
+            <img src="logo.png" class="rounded circle mx-auto d-block" style="width: 50px; height: 50px;">
+            <span class="navbar-brand ms-2" style="color: var(--secondary-color);">Lunar Cafe </span>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                
+                <ul class="navbar-nav me-auto">
+                    
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="index.html"><button class="btn btn-outline-light">Home</button></a>
+
+                    </li>
+
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="Page.html"><button class="btn btn-outline-light">Order Food!</button></a>
+
+                    </li>
+
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="Contact_us.html"><button class="btn btn-outline-light">Contact Us!</button></a>
+
+                    </li>
+
+                </ul>
+
+                <form class="d-flex">
+                    
+                    <input class="form-control me-3" type="search" placeholder="Search..." style="margin-right: 20px; width: 150px;">
+                    <button class="btn btn-active btn-primary" type="button">Search</button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <main class="mt-5">
+
+        <div class="bck2 mt-4 text-center">
+        
+            <h1 id="storename" class="bck"></h1>
+
+        </div>
+
+        <div class="card mt-4">
+
+            <div class = "card-header text-center py-3">
+
+                <h2 class="mb-0">Menu</h2>
+
+            </div>
+
+            <div class="card-body p-4">
+                <center>
+                    
+                    <details ontoggle="info()">
+
+                        <summary><img src="https://www.datocms-assets.com/129288/1725393944-moist-chicken-burgers.jpg" alt="Classic Chicken Burger"> <br> Classic Chicken Burger</summary>
+
+                        <label for="input1" class="bck">Number of Order:</label>
+
+                        <input type="number" id="input1" class="form-control mb-3" placeholder="0" min="0">
+
+                    </details>
+
+                    <br>
+
+                    <details ontoggle="info()">
+
+                        <summary><img src="https://somuchfoodblog.com/wp-content/uploads/2023/01/steakhouse-burger12.jpg" alt="Beef Steak Burger"><br>Beef Steak Burger</summary>
+
+                        <label for="input2" class="bck">Number of Order:</label>
+
+                        <input type="number" id="input2" class="form-control mb-3" placeholder="0" min="0">
+
+                    </details>
+
+                    <br>
+
+                    <details ontoggle="info()">
+
+                        <summary><img src="https://fishandmeat.hk/wp-content/uploads/2025/05/arabic-chicken-shawarma-sandwich-recipe-1747792750.jpg" alt="Chicken Shawarma"><br>Chicken Shawarma</summary>
+
+                        <label for="input3" class="bck">Number of Order:</label>
+
+                        <input type="number" id="input3" class="form-control mb-3" placeholder="0" min="0">
+
+                    </details>
+
+                    <br>
+
+                    <details ontoggle="info()">
+
+                        <summary><img src="https://www.thespruceeats.com/thmb/XDBL9gA6A6nYWUdsRZ3QwH084rk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/SES-chicken-biryani-recipe-7367850-hero-A-ed211926bb0e4ca1be510695c15ce111.jpg" alt="Biryani"><br>Biryani</summary> 
+
+                        <label for="input4" class="bck">Number of Order:</label>
+
+                        <input type="number" id="input4" class="form-control mb-3" placeholder="0" min="0">
+
+                    </details>
+
+                    <h6 class="text-end mt-4" id="tax">Tax/Total placeholder</h6>
+                
+                </center>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+
+            <div class = "card-header text-center py-3">
+
+                <h4 class="mb-0">Customer Details</h4>
+
+            </div>
+
+            <div class="card-body p-4">
+                <center>
+
+                    <form>
+
+                        <label class="bck">Name:</label>
+                        <input type="text" id="info1" class="form-control mb-3" placeholder="Full Name">
+
+                        <label class="bck">Address:</label>
+                        <input type="text" id="info2" class="form-control mb-3" placeholder="Delivery Address">
+
+                        <label class="bck">Contact Number:</label>
+                        <input type="text" id="info3" class="form-control mb-3" placeholder="Contact Number">
+
+                    </form>
+                
+                </center>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+
+            <div class = "card-header text-center py-3">
+
+                <button type="button" class="btn btn-light btn-lg px-5" py-click="info">Create Order / Calculate</button>
+
+            </div>
+
+        </div>
+
+        <div class="card mt-4">
+
+            <div class = "card-header text-center py-3">
+
+                <h4 class="mb-0">Receipt:</h4>
+
+            </div>
+
+            <div class="card-body p-4">
+                <center>
+
+                    <div class="bck">
+
+                        <div id="Name">Customer Name/Order #</div> 
+                        <div id="output1"></div>
+                        <div id="output2"></div>
+                        <div id="output3"></div>
+                        <div id="output4">Total Amount Due:</div>
+
+                    </div>
+                
+                </center>
+            </div>
+        </div>
+
+        <div class="card mt-4 mb-5">
+
+            <div class = "card-header text-center py-3">
+
+                <a class="nav-link p-0" href="index.html"><button class="btn btn-light btn-lg px-5">Back to Home</button></a>
+
+            </div>
+
+        </div>
+
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
